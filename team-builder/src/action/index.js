@@ -32,7 +32,7 @@ export const getProjects = () => dispatch => {
     .catch(err => dispatch({ type: FETCHING_PROJECT_FAIL, payload: err }))
 }
 
-export const addProject = () => dispatch => {
+export const addProject = newProject => dispatch => {
     dispatch({ type: ADD_PROJECT_START });
 
     return axios.put('http://', newProject)

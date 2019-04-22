@@ -17,21 +17,42 @@ export default class ProjectForm extends Component {
         this.props.addProject()
     }
 
+    handleChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleSubmit = e => {
+        e.preventDefault();
+        this.props.addProject(this.state)
+        this.setState({
+            projectName:'',
+            projectDisc:'',
+            teamMembers:[],
+            isLoading: false,
+            id: Date.now(),
+            error:''
+        })
+    }
+
   render() {
       const {projectName, projectDisc } =this.state
     return (
-      <form>
+      <form onSubmit = {this.handleSubmit}>
           <input 
             input='text'
             name='projectName'
             placeholder='Project Name'
             value = {projectName}
+            onChange={this.handleChange}
           />
           <input 
             input='text'
             name='projectName'
-            placeholder='Project Name'
-            value = {projectName}
+            placeholder='Project disc'
+            value = {projectDisc}
+            onChange={this.handleChange}
           />
         <button>Add Project</button>
       </form>
