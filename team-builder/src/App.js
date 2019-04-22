@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
 
-import { Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import './App.css';
 import ComponentIndexFile from './component/ComponentIndexFile';
-
+import Login from './component/loginComponent/Login';
+import PrivateRoute from './component/PrivateRoute';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-      <nav>
-        <h1>Admin Log In</h1>
-        <NavLink exact to='/login'>
-         Login
-        </NavLink>
-      </nav>
-       <ComponentIndexFile />
-      </div>
+      <Router>
+        <div className="App">
+          <ul>
+            <li>
+              <Link excat path ='/' component = {Login}>Login</Link>
+            </li>
+            <li>
+              <Link to='/protected'>Protected Page</Link>
+            </li>
+          </ul>
+          <Route path='/' component={Login} />
+          <PrivateRoute exact path ='/protected' component= {ComponentIndexFile} />
+        </div>
+      </Router>
+      
     );
   }
 }
