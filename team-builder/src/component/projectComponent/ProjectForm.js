@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { addProject } from '../../action';
 
-export default class ProjectForm extends Component {
+class ProjectForm extends Component {
 
     state= {
         projectName:'',

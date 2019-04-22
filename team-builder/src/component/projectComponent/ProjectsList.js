@@ -12,11 +12,12 @@ class ProjectsList extends Component {
 
 
   render() {
+      console.log(this.state)
     return (
       <div>
-        {this.props.projectsList.map((project, id) => {
+        {this.props.projectsList.map((project, id) => 
             <Project project={project} key={id} />
-        })}
+        )}
       </div>
     )
   }
@@ -24,7 +25,7 @@ class ProjectsList extends Component {
 
 const mapStateToProps = state => ({
     getProjects: state.getProjects,
-    ProjectsList: state.projectsList
+    projectsList: state.projectsList
 })
 
 export default connect (mapStateToProps, { getProjects })(ProjectsList);

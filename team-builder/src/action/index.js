@@ -19,7 +19,8 @@ export const DELETE_PROJECT_FAIL = 'DELETE_PROJECT_FAIL';
 export const login = credentails => dispatch => {
     dispatch({ type: LOGIN_START });
 
-    return axios.post('http://https://team-builders.herokuapp.com/api/login', credentails)
+    return axios.post('http://localhost:5000/api/login', credentails)
+    // localStorage.setItem('token', response.data.token)
     .then(res => dispatch({ type: LOGIN_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: LOGIN_FAIL, payload: err }))
 }

@@ -1,70 +1,15 @@
 import{ LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, FETCHING_PROJECT_START, ADD_PROJECT_SUCCESS, ADD_PROJECT_FAIL, ADD_PROJECT_START, FETCHING_PROJECT_SUCCESS, FETCHING_PROJECT_FAIL, DELETE_PROJECT_START, DELETE_PROJECT_SUCCESS, DELETE_PROJECT_FAIL } from '../action';
 
 const initialState = {
-    // project:{
-    //     projectName:'',
-    //     projectDisc:'',
-    //     teamMembers:[],
-    //     isLoading: false,
-    //     id: Date.now(),
-    //     error:''
-    // }
+    project:{
+        projectName:'',
+        projectDisc:'',
+        teamMembers:[],
+        isLoading: false,
+        id: Date.now(),
+        error:''
+    }
 
-    projects: [{
-        "id": 1,
-        "project_name": "Otcom",
-        "description": 1,
-        "team_members": [
-          {
-            "id": 1,
-            "name": "Dun Skippon",
-            "email": "dskippon0@angelfire.com",
-            "role": "Civil Engineer"
-          },
-          {
-            "id": 2,
-            "name": "Toiboid Waldie",
-            "email": "twaldie1@pinterest.com",
-            "role": "Chemical Engineer"
-          },
-          {
-            "id": 3,
-            "name": "Dara deKnevet",
-            "email": "ddeknevet2@cbc.ca",
-            "role": "Payment Adjustment Coordinator"
-          },
-          {
-            "id": 4,
-            "name": "Carlina Brea",
-            "email": "cbrea3@nature.com",
-            "role": "Senior Financial Analyst"
-          },
-          {
-            "id": 5,
-            "name": "Randene Dumbellow",
-            "email": "rdumbellow4@instagram.com",
-            "role": "Actuary"
-          }
-        ]
-      }, {
-        "id": 2,
-        "project_name": "Zathin",
-        "description": 2,
-        "team_members": [
-          {
-            "id": 1,
-            "name": "Tab Curado",
-            "email": "tcurado0@photobucket.com",
-            "role": "Internal Auditor"
-          },
-          {
-            "id": 2,
-            "name": "Erv Pfeffle",
-            "email": "epfeffle1@hhs.gov",
-            "role": "Registered Nurse"
-          }
-        ]
-      }]
 }
 
 
