@@ -4,7 +4,7 @@ import { getProjects } from '../../action';
 import { connect } from 'react-redux';
 import Project from './Project';
 
-export default class ProjectsList extends Component {
+class ProjectsList extends Component {
 
     componentDidMount(){
         this.props.getProjects();
