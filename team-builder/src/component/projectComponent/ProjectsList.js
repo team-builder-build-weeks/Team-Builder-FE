@@ -12,7 +12,6 @@ class ProjectsList extends Component {
 
 
   render() {
-      console.log(this.state)
     return (
       <div>
         {this.props.projectsList.map((project, id) => 

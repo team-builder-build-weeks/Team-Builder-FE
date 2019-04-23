@@ -8,8 +8,8 @@ const initialState = {
         isLoading: false,
         id: Date.now(),
         error:''
-    }
-
+    },
+    projectsList: []
 }
 
 

@@ -14,13 +14,13 @@ class App extends Component {
         <div className="App">
           <ul>
             <li>
-              <Link excat path ='/' component = {Login}>Login</Link>
+              <Link to ='/login' component = {Login}>Login</Link>
             </li>
             <li>
               <Link to='/protected'>Protected Page</Link>
             </li>
           </ul>
-          <Route path='/' component={Login} />
+          <Route path='/login' component={Login} />
           <PrivateRoute exact path ='/protected' component= {ComponentIndexFile} />
         </div>
       </Router>

@@ -49,7 +49,7 @@ class ProjectForm extends Component {
           />
           <input 
             input='text'
-            name='projectName'
+            name='projectDisc'
             placeholder='Project disc'
             value = {projectDisc}
             onChange={this.handleChange}
@@ -62,12 +62,12 @@ class ProjectForm extends Component {
 
 const mapStateToProps = state => {
     return{
-        projectName: this.project.projectName,
-        projectDisc: this.project.projectDisc,
-        teamMembers: this.project.teamMembers,
-        isLoading: this.state.isLoading,
-        error: this.state.error,
-        id: this.state.id
+        projectName: state.projectName,
+        projectDisc: state.projectDisc,
+        teamMembers: state.teamMembers,
+        isLoading: state.isLoading,
+        error: state.error,
+        id: state.id
     }
 }
 
