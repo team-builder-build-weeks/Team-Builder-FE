@@ -9,8 +9,7 @@ class ProjectsList extends Component {
     componentDidMount(){
         this.props.getProjects();
     }
-
-
+    
   render() {
     return (
       <div>
