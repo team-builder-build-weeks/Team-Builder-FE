@@ -51,7 +51,7 @@ export const login = credentails => dispatch => {
 export const getProjects = () => dispatch => {
     dispatch({ type:FETCHING_PROJECT_START });
 
-    return axios.get("http://")
+    return axios.get("http://https://team-builders.herokuapp.com/api/projects")
     .then(res => dispatch({ type: FETCHING_PROJECT_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: FETCHING_PROJECT_FAIL, payload: err }))
 }
@@ -61,7 +61,7 @@ export const addProject = newProject => dispatch => {
     // const newProject = {
     //     "name": "an app"
     // }
-    return axios.post('http://', newProject)
+    return axios.post('http://https://team-builders.herokuapp.com/api/projects', newProject)
     .then(res => dispatch({ type: ADD_PROJECT_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: DELETE_PROJECT_FAIL, payload: err }))
 }
@@ -69,7 +69,7 @@ export const addProject = newProject => dispatch => {
 export const deleteProject = id => dispatch => {
     dispatch({ type: DELETE_PROJECT_START });
 
-    return axios.delete(`http://${id}`)
+    return axios.delete(`http://https://team-builders.herokuapp.com/api/${id}`)
     .then(res => dispatch({ type: DELETE_PROJECT_START, playload: res.data }))
     .catch(res => dispatch({ type: DELETE_PROJECT_FAIL, payload: res.data }))
 }
