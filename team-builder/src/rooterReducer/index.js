@@ -1,15 +1,54 @@
 import{ LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, FETCHING_PROJECT_START, ADD_PROJECT_SUCCESS, ADD_PROJECT_FAIL, ADD_PROJECT_START, FETCHING_PROJECT_SUCCESS, FETCHING_PROJECT_FAIL, DELETE_PROJECT_START, DELETE_PROJECT_SUCCESS, DELETE_PROJECT_FAIL, SIGNUP_START, SIGNUP_SUCCESS, SIGNUP_FAIL } from '../action';
 
 const initialState = {
-    project:{
-        projectName:'',
-        projectDisc:'',
-        teamMembers:[],
-        isLoading: false,
-        id: Date.now(),
-        error:''
-    },
-    projectsList: []
+    // project:{
+    //     projectName:'',
+    //     projectDisc:'',
+    //     teamMembers:[],
+    //     isLoading: false,
+    //     id: Date.now(),
+    //     error:''
+    // }
+    project:[],
+    projectsList: [{
+        id: 2,
+        projectName: "Zathin",
+        projectDisc: 2,
+        teamMembers: [
+          {
+            id: 1,
+            name: "Tab Curado",
+            email: "tcurado0@photobucket.com",
+            role: "Internal Auditor"
+          },
+          {
+            id: 2,
+            name: "Erv Pfeffle",
+            email: "epfeffle1@hhs.gov",
+            role: "Registered Nurse"
+          }
+        ]
+      },
+      {
+        id: 3,
+        projectName: "Zathin",
+        projectDisc: 2,
+        teamMembers: [
+          {
+            id: 7,
+            name: "Tab Curado",
+            email: "tcurado0@photobucket.com",
+            role: "Internal Auditor"
+          },
+          {
+            id: 8,
+            name: "Erv Pfeffle",
+            email: "epfeffle1@hhs.gov",
+            role: "Registered Nurse"
+          }
+        ]
+      }
+    ]
 }
 
 
@@ -33,22 +72,21 @@ function reducer(state=initialState, action){
         case FETCHING_PROJECT_SUCCESS:
         return {
             ...state,
-            projects: action.payload,
+            // projects: action.payload,
             error:'', 
             isLoading: false
         }
 
-        case SIGNUP_SUCCESS:
+        case SIGNUP_FAIL:
         case LOGIN_FAIL:
         case FETCHING_PROJECT_FAIL:
         case ADD_PROJECT_FAIL:
         case DELETE_PROJECT_FAIL:
         return {
             ...state,
-            error: action.payload,
+            // error: action.payload,
             isLoading: false
         }
-
 
         default:
         return state

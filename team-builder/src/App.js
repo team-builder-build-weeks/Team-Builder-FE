@@ -15,15 +15,15 @@ class App extends Component {
         <div className="App">
           <ul>
             <li>
-              <Link to ='/login' component = {Login}>Login</Link>
+              <Link to='/login' component={Login}>Login</Link>
             </li>
             <li>
-              <Link to='/signup' component = {SignupForm}>Sign Up</Link>
+              <Link to='/signup' component={SignupForm}>Sign Up</Link>
             </li>
           </ul>
           <Route path='/login' component={Login} />
-          <Route path='/signup' component = {SignupForm} />
-          <PrivateRoute exact path ='/protected' component= {ComponentIndexFile} />
+          <Route path='/signup' component={SignupForm} />
+          <PrivateRoute exact path='/protected' component={ComponentIndexFile} />
         </div>
       </Router>
       

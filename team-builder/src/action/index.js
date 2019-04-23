@@ -58,10 +58,10 @@ export const getProjects = () => dispatch => {
 
 export const addProject = newProject => dispatch => {
     dispatch({ type: ADD_PROJECT_START });
-    const newProject = {
-        "name": "an app"
-    }
-    return axios.put('http://', newProject)
+    // const newProject = {
+    //     "name": "an app"
+    // }
+    return axios.post('http://', newProject)
     .then(res => dispatch({ type: ADD_PROJECT_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: DELETE_PROJECT_FAIL, payload: err }))
 }

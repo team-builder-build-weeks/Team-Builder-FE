@@ -11,10 +11,11 @@ class ProjectsList extends Component {
     }
     
   render() {
+    console.log('inside list', this.props)
     return (
       <div>
         {this.props.projectsList.map((project, id) => 
-            <Project project={project} key={id} />
+            (<Project project={project} key={id} />)
         )}
       </div>
     )
