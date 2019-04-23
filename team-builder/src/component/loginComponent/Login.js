@@ -16,7 +16,7 @@ class Login extends Component {
         this.setState({
             credentials: {
                 ...this.state.credentials,
-                [e.target.value]: e.target.name
+                [e.target.name]: e.target.value
             }
         });
     }

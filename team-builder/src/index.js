@@ -13,6 +13,11 @@ import * as serviceWorker from './serviceWorker';
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
+// get auth header from localstorage and put it in axios headers
+const AUTH_TOKEN = localStorage.getItem('jwt')
+if (AUTH_TOKEN) {
+    axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+}
 
 ReactDOM.render(
 <Provider store = {store} >

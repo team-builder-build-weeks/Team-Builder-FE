@@ -1,5 +1,8 @@
 import{ LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, FETCHING_PROJECT_START, ADD_PROJECT_SUCCESS, ADD_PROJECT_FAIL, ADD_PROJECT_START, FETCHING_PROJECT_SUCCESS, FETCHING_PROJECT_FAIL, DELETE_PROJECT_START, DELETE_PROJECT_SUCCESS, DELETE_PROJECT_FAIL } from '../action';
 
+// const mockData = JSON.parse(require('../mockData.json'))
+// console.log(mockData)
+
 const initialState = {
     project:{
         projectName:'',
