@@ -38,6 +38,7 @@ class Login extends Component {
                 placeholder = 'username'
                 value = {this.state.username}
                 onChange = {this.handleChange}
+                required
             />
             <input 
                 input = 'text'
@@ -45,6 +46,7 @@ class Login extends Component {
                 placeholder = 'password'
                 value= {this.state.password}
                 onChange = {this.handleChange}
+                required
             />
             <button>login</button>
         </form> 

@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { signup } from '../../action';
 
 class SignupForm extends Component {
   
   state={
-    username:'',
-    password:'',
+    
+      username:'',
+      password:''
+    
   }
   
   handleChange = e => {
@@ -16,7 +20,8 @@ class SignupForm extends Component {
   
   handleSubmit = e => {
     e.preventDefault();
-    axios.post('https://team-builders.herokuapp.com/api/register', this.state);
+    this.props.signup(this.state);
+    // axios.post('https://team-builders.herokuapp.com/api/register', this.state);
   }
   render() {
     return (
@@ -44,4 +49,5 @@ class SignupForm extends Component {
 }
 
 
-export default SignupForm;
+
+ export default connect(null, { signup })(SignupForm) ;
