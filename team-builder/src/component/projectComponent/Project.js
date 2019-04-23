@@ -4,17 +4,22 @@ import { connect } from 'react-redux';
 
 class Project extends Component {
 
-    componentDidMount(){
-        this.props.deleteProject()
-    }
 
   render() {
+    console.log('inside projects',this.props)
       const{ projectName, projectDisc, teamMembers, id } = this.props.project
     return (
       <div>
         <h2>{projectName}</h2>
         <p>{projectDisc}</p>
-        <p>{teamMembers}</p>
+        {teamMembers.map((member, id)=>(
+          <>
+            <div>{member.name}</div>
+            <div>{member.email}</div>
+            <div>{member.role}</div>
+           </> 
+            )
+          )}
         <button
             onClick={()=>this.props.deleteProject(id)}
         >Delete Project</button>
@@ -26,7 +31,7 @@ class Project extends Component {
 const mapStateToProps = state => {
     return{
         deleteProject: state.deleteProject,
-        projects: state.projects
+        
     }
 }
 

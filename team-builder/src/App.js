@@ -6,6 +6,7 @@ import './App.css';
 import ComponentIndexFile from './component/ComponentIndexFile';
 import Login from './component/loginComponent/Login';
 import PrivateRoute from './component/PrivateRoute';
+import SignupForm from './component/signupComponent/SignupForm';
 
 class App extends Component {
   render() {
@@ -14,14 +15,15 @@ class App extends Component {
         <div className="App">
           <ul>
             <li>
-              <Link to ='/login' component = {Login}>Login</Link>
+              <Link to='/login' component={Login}>Login</Link>
             </li>
             <li>
-              <Link to='/protected'>Protected Page</Link>
+              <Link to='/signup' component={SignupForm}>Sign Up</Link>
             </li>
           </ul>
           <Route path='/login' component={Login} />
-          <PrivateRoute exact path ='/protected' component= {ComponentIndexFile} />
+          <Route path='/signup' component={SignupForm} />
+          <PrivateRoute exact path='/protected' component={ComponentIndexFile} />
         </div>
       </Router>
       
