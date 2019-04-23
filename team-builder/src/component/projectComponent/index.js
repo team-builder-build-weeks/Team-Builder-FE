@@ -5,9 +5,7 @@ import { login, getProjects, addProject, deleteProject } from '../../action';
 import ProjectsList from './ProjectsList';
 import ProjectFrom from './ProjectForm';
 
-function index() {
-
-  
+function index() { 
   return (
     <div className='App'>
       <ProjectsList />

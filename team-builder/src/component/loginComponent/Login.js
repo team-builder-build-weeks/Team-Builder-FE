@@ -16,7 +16,7 @@ class Login extends Component {
         this.setState({
             credentials: {
                 ...this.state.credentials,
-                [e.target.value]: e.target.name
+                [e.target.name]: e.target.value
             }
         });
     }
@@ -24,7 +24,8 @@ class Login extends Component {
     login = e => {
         e.preventDefault();
         this.props.login(this.state.credentials)
-            .then(()=> this.props.history.push('/protected'));
+            .then(()=> this.props.history.push('/protected'))
+            .catch(()=>this.props.history.push('/login'));
     }
 
   render() {
