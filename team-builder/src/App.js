@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <ul>
+          <ul class="login-buttons">
             <li>
               <Link to='/login' component={Login}>Login</Link>
             </li>

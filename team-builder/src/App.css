@@ -35,3 +35,12 @@
 .project-wrap{
   border: 1px solid gray;
 }
+
+.login-buttons {
+  display: flex;
+  justify-content: center
+}
+
+.login-buttons li {
+  justify-content: space-;
+}
