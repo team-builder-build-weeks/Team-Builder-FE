@@ -10,16 +10,19 @@ class Project extends Component {
 
 
   render() {
-    console.log('inside projects',this.props)
-      const{ projectName, projectDisc, teamMembers, id } = this.props.project
+    const project = this.props.project || this.props.projects.find(projectInArr =>{
+      return projectInArr.id == this.props.match.params.id;
+    } )
+    console.log('inside project',this.props)
+      const{ name, discription, id } = project
     return (
-      <div>
-        <h2>{projectName}</h2>
-        <p>{projectDisc}</p>
-        {teamMembers.map((member, id)=>( 
+      <div className="project-wrap">
+        <h2>{name}</h2>
+        <p>{discription}</p>
+        {/* {teamMembers.map((member, id)=>( 
             <Members member={member} key={id}/>
             )
-          )}
+          )} */}
         <button
             onClick={()=>this.props.deleteProject(id)}
         >Delete Project</button>
@@ -28,10 +31,9 @@ class Project extends Component {
   }
 }
 
-const mapStateToProps = state => {
-    return{
-        deleteProject: state.deleteProject, 
-    }
-}
+const mapStateToProps = state => ({
+  projects: state.projectList
+})
+
 
 export default connect(mapStateToProps, { deleteProject })(Project)
