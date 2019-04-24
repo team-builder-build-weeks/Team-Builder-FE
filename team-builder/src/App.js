@@ -7,6 +7,7 @@ import ComponentIndexFile from './component/ComponentIndexFile';
 import Login from './component/loginComponent/Login';
 import PrivateRoute from './component/PrivateRoute';
 import SignupForm from './component/signupComponent/SignupForm';
+import Project from './component/projectComponent/Project';
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
           </ul>
           <Route path='/login' component={Login} />
           <Route path='/signup' component={SignupForm} />
+          <Route path='/project/:id' component={Project} />
           <PrivateRoute exact path='/protected' component={ComponentIndexFile} />
         </div>
       </Router>

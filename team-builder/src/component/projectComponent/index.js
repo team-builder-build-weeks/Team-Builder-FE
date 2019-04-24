@@ -2,13 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { login, getProjects, addProject, deleteProject } from '../../action';
 
-import ProjectsList from './ProjectsList';
+import ProjectList from './ProjectList';
 import ProjectForm from './ProjectForm';
 
 function index() { 
   return (
     <div className='App'>
-      <ProjectsList />
+      <ProjectList />
       <ProjectForm />
     </div>
   )
