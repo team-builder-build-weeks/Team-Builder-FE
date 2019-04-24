@@ -34,18 +34,18 @@ const initialState = {
       },
       {
         id: 3,
-        projectName: "Zathin",
+        projectName: "apple",
         projectDisc: 2,
         teamMembers: [
           {
             id: 7,
-            name: "Tab Curado",
+            name: "jonny appleseed",
             email: "tcurado0@photobucket.com",
             role: "Internal Auditor"
           },
           {
             id: 8,
-            name: "Erv Pfeffle",
+            name: "banana",
             email: "epfeffle1@hhs.gov",
             role: "Registered Nurse"
           }

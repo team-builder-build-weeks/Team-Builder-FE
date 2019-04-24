@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { deleteProject } from '../../action';
 import { connect } from 'react-redux';
 
+import Members from '../memberComponent';
+
+
+
 class Project extends Component {
 
 
@@ -12,12 +16,8 @@ class Project extends Component {
       <div>
         <h2>{projectName}</h2>
         <p>{projectDisc}</p>
-        {teamMembers.map((member, id)=>(
-          <>
-            <div>{member.name}</div>
-            <div>{member.email}</div>
-            <div>{member.role}</div>
-           </> 
+        {teamMembers.map((member, id)=>( 
+            <Members member={member} key={id}/>
             )
           )}
         <button
@@ -30,8 +30,7 @@ class Project extends Component {
 
 const mapStateToProps = state => {
     return{
-        deleteProject: state.deleteProject,
-        
+        deleteProject: state.deleteProject, 
     }
 }
 

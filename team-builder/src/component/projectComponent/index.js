@@ -8,7 +8,6 @@ import ProjectForm from './ProjectForm';
 function index() { 
   return (
     <div className='App'>
-      <h1>hello</h1>
       <ProjectsList />
       <ProjectForm />
     </div>
