@@ -10,9 +10,6 @@ import Project from './Project';
 
 class ProjectList extends Component {
 
-    componentDidMount(){
-        this.props.getProjects();
-    }
     
   render() {
     console.log('inside list', this.props, this.props.projectList)

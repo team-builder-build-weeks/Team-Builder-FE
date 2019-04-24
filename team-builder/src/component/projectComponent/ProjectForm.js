@@ -13,10 +13,6 @@ class ProjectForm extends Component {
         error:''
     }
 
-    componentDidMount(){
-        this.props.addProject()
-    }
-
     handleChange = e => {
         this.setState({
             [e.target.name]: e.target.value
