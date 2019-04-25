@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import axios from 'axios';
 
 import { loadState, saveState } from './localStorage';
 // import { persistStore, persistReducer } from 'redux-persist';
@@ -39,6 +40,11 @@ store.subscribe(() => {
 
 // const persistor = persistStore(store)
 
+// get auth header from localstorage and put it in axios headers
+const AUTH_TOKEN = localStorage.getItem('jwt')
+if (AUTH_TOKEN) {
+    axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+}
 
 ReactDOM.render(
 <Provider store = {store} >
