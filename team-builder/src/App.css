@@ -88,8 +88,7 @@
 
 .projectWrap{
   background-color: whitesmoke;
-  height: 10rem;
-  /* width: 12rem; */
+  padding: 10px;
   color: tomato;
   border-radius: 10px;
 }

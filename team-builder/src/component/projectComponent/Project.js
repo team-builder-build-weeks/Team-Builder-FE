@@ -7,10 +7,11 @@
 
 
 import React, { Component } from 'react'
-import { deleteProject } from '../../action';
+import { deleteProject, editProject } from '../../action';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -19,10 +20,35 @@ class Project extends Component {
 // componentDidMount(){
 //   this.props.deleteProject()
 // }
+constructor(props){
+  super(props);
+  this.state={
+  id:props.project.id,
+  name:'',
+  description:''
+}
+}
+
+
+
+handleEdit=e=>{
+  e.preventDefault();
+  this.props.editProject(this.state)
+ 
+}
+
+onChange=e=>{
+  
+  this.setState({
+    [e.target.name]: e.target.value
+  })
+}
+
+
   render() {
-    const project = this.props.project || this.props.projects.find(projectInArr =>{
+    const project =  this.props.projects.find(projectInArr =>{
       return projectInArr.id == this.props.match.params.id;
-    } )
+    } )||this.props.project 
     console.log('inside project',this.props)
       const{ name, discription, id } = project
     return (
@@ -33,6 +59,29 @@ class Project extends Component {
         <button
             onClick={()=>this.props.deleteProject(id)}
         >Delete</button>
+        
+        <form onSubmit={this.handleEdit}>
+        <input 
+          type='text'
+          name='name'
+          value={this.state.name}
+          onChange={this.onChange}
+          placeholder='edit'
+        />
+        <input 
+          type='text'
+          name='description'
+          value={this.state.description}
+          onChange={this.onChange}
+          placeholder='edit'
+        />
+        <button
+        onClick={()=>this.props.editProject(this.state)}  
+        >ec
+        edit 
+        </button>
+
+        </form>
       </div>
     )
   }
@@ -43,7 +92,7 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps, { deleteProject })(Project)
+export default connect(mapStateToProps, { deleteProject, editProject })(withRouter(Project))
 
 
 // export default connect(mapStateToProps, { deleteProject })(Project)

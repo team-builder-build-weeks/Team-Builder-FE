@@ -10,6 +10,7 @@ import Login from './component/loginComponent/Login';
 import PrivateRoute from './component/PrivateRoute';
 import SignupForm from './component/signupComponent/SignupForm';
 import ProjectView from './component/projectComponent/Project';
+import Project from './component/projectComponent/Project';
 
 class App extends Component {
   render() {
@@ -28,9 +29,9 @@ class App extends Component {
 
           <Route path='/login' component={Login} />
           <Route path='/signup' component={SignupForm} />
-          {/* <Route path='/project/:id' render={props => {ProjectView} {...{props}}} /> */}
+          {/* <Route path='/project/:id' render={props => <ProjectView {...props}/>} /> */}
           <PrivateRoute exact path='/protected' component={ComponentIndexFile} />
-          <PrivateRoute exact path='/protected/:id' indi={true} component={ComponentIndexFile} />
+          <PrivateRoute exact path='/protected/:id' indi={true} component={Project} />
           
         </div>
       </Router>
