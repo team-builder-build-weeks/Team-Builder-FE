@@ -76,7 +76,7 @@ export const addProject = newProject => dispatch => {
 export const deleteProject = id => dispatch => {
     dispatch({ type: DELETE_PROJECT_START });
     return axios.delete(`https://team-builders.herokuapp.com/api/projects/${id}`)
-    .then(res => dispatch({ type: DELETE_PROJECT_START, playload: res.data }))
+    .then(res => dispatch({ type: DELETE_PROJECT_SUCCESS, playload: res.data }))
     .catch(res => dispatch({ type: DELETE_PROJECT_FAIL, payload: res.data }))
 }
 
