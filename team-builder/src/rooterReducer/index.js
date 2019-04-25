@@ -60,7 +60,7 @@ function reducer(state=initialState, action){
         case FETCHING_PROJECT_SUCCESS:
         return {
             ...state,
-            projectList: action.payload.map(project => { project.id = project._id; return project; })
+            projectList: [ ...action.payload ]
         }
         case ADD_ROLES_SUCCESS:
         return {
