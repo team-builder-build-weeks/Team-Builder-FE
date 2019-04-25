@@ -9,7 +9,7 @@
 import React, { Component } from 'react'
 import { deleteProject } from '../../action';
 import { connect } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -27,7 +27,7 @@ class Project extends Component {
       const{ name, discription, id } = project
     return (
       <div className="projectWrap">
-        <h2>{name}</h2>
+        <Link to={`/protected/${id}`}><h2>{name}</h2></Link>
         <p>{discription}</p>
        
         <button

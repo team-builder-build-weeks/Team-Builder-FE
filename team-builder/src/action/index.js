@@ -29,6 +29,12 @@ export const ADD_ROLES_START = 'ADD_ROLES_START';
 export const ADD_ROLES_SUCCESS = 'ADD_ROLES_SUCCESS';
 export const ADD_ROLES_FAIL = 'ADD_ROLES_FAIL';
 
+export const EDIT_PROJECT_START = 'EDIT_PROJECT_START';
+export const EDIT_PROJECT_SUCCESS = 'EDIT_PROJECT_SUCCESS';
+export const EDIT_PROJECT_FAIL = 'EDIT_PROJECT_FAIL';
+
+
+
 export const signup = credentails => dispatch => {
     console.log('inside action', credentails)
     dispatch({ type: SIGNUP_START });
@@ -111,4 +117,11 @@ export const addRoles = newRole => dispatch => {
     return axios.post('https://team-builders.herokuapp.com/api/roles', newRole)
     .then(res => dispatch({ type: ADD_ROLES_SUCCESS, playload: res.data }))
     .catch(err => dispatch({ type: ADD_ROLES_FAIL, playload: err }))
+}
+
+export const editProject = id =>dispatch => {
+    dispatch({ type: EDIT_PROJECT_START})
+    return axios.put('https://team-builders.herokuapp.com/api/projects', id)
+    .then(res=>dispatch({ type: EDIT_PROJECT_SUCCESS, payload: res.data}))
+    .catch(err=> dispatch({ type: EDIT_PROJECT_FAIL, payload: err}))
 }
