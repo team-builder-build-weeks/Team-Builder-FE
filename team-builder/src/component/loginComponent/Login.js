@@ -30,7 +30,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div class='loginFormWrapper'>
          <form onSubmit={this.login}>
             <input 
                 input = 'text'

@@ -13,10 +13,6 @@ class ProjectForm extends Component {
         error:''
     }
 
-    componentDidMount(){
-        this.props.addProject()
-    }
-
     handleChange = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -25,7 +21,13 @@ class ProjectForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.addProject(this.state)
+        // projectDisc
+        // projectName
+
+        const { projectName: name, projectDisc: description } = this.state;
+        const newProject = { name, description };
+        console.log('reasign', newProject);
+        this.props.addProject(newProject)
         this.setState({
             projectName:'',
             projectDisc:'',
@@ -46,6 +48,7 @@ class ProjectForm extends Component {
             placeholder='Project Name'
             value = {projectName}
             onChange={this.handleChange}
+            required
           />
           <input 
             input='text'
@@ -53,6 +56,7 @@ class ProjectForm extends Component {
             placeholder='Project disc'
             value = {projectDisc}
             onChange={this.handleChange}
+            required
           />
         <button>Add Project</button>
       </form>
