@@ -19,9 +19,12 @@ class ProjectList extends Component {
     return (
       <div className='projectListWrapper' >
         {this.props.projectList.map((project, id) => (
-            <div className="projectListWrap" key={project.id}>
-              <Link to={`/project/${project.id}`} >
-                <Project project={project} key={project.id} id={id} />
+            <div className="projectListWrap" key={project.name}>
+            {/* <div className="projectListWrap" key={project.id}> */}
+              <Link to={`/project/${project}`} >
+              {/* <Link to={`/project/${project.id}`} > */}
+              <Project project={project} key={id} />
+                {/* <Project project={project} key={project.id} id={id} /> */}
               </Link>
             </div>)
         )}
@@ -30,7 +33,8 @@ class ProjectList extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => (
+  (console.log('map ProjectList', state)),{
     projectList: state.projectList
 })
 

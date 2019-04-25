@@ -3,7 +3,7 @@ import{ LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, FETCHING_PROJECT_START, ADD_PROJ
 const initialState = {
     project:[],
     projectList: [{
-        id:'',
+        id:null,
         name:'',
         description:''
     }]

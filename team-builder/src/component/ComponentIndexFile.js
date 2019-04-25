@@ -5,7 +5,7 @@ import Table from './tableComponent/table.js';
 
 export default function ComponentIndexFile() {
   return (
-    <div>
+    <div className='compDiv'>
       <ProjectComponent />
       {/* <RolesComponent /> */}
       <Table/>
