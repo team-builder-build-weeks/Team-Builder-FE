@@ -49,9 +49,15 @@ export const login = credentails => dispatch => {
     .then(res => {
         localStorage.setItem('token', res.data.token)
         axios.defaults.headers.common['Authorization'] = res.data.token;
-        return dispatch({ type: LOGIN_SUCCESS, payload: res.data })
+       dispatch({ type: LOGIN_SUCCESS, payload: res.data })
+       return 1
     })
-    .catch(err => dispatch({ type: LOGIN_FAIL, payload: err }))
+    .catch(err => {
+        dispatch({ type: LOGIN_FAIL, payload: err })
+        return 0
+    }
+    )
+    
 }
 
 export const getProjects = () => dispatch => {
@@ -76,7 +82,7 @@ export const addProject = newProject => dispatch => {
 export const deleteProject = id => dispatch => {
     dispatch({ type: DELETE_PROJECT_START });
     return axios.delete(`https://team-builders.herokuapp.com/api/projects/${id}`)
-    .then(res => dispatch({ type: DELETE_PROJECT_SUCCESS, playload: res.data }))
+    .then(res => dispatch({ type: DELETE_PROJECT_SUCCESS, playload: id}))
     .catch(res => dispatch({ type: DELETE_PROJECT_FAIL, payload: res.data }))
 }
 

@@ -51,7 +51,7 @@ function reducer(state=initialState, action){
 
         case DELETE_PROJECT_SUCCESS:
         return {
-            // ...state,
+            ...state,
             projectList: state.projectList.filter((project, id)=>{
                 return id !== action.payload
             })
@@ -75,6 +75,12 @@ function reducer(state=initialState, action){
 
         case SIGNUP_FAIL:
         case LOGIN_FAIL:
+        return {
+            ...state,
+            error: action.payload,
+            isloading: false
+        }
+
         case FETCHING_PROJECT_FAIL:
         case ADD_PROJECT_FAIL:
         case DELETE_PROJECT_FAIL:
