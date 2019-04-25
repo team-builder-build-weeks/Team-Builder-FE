@@ -59,29 +59,30 @@ onChange= e =>{
         <button
             onClick={()=>this.props.deleteProject(id)}
         >Delete</button>
-        
-        <form onSubmit={this.handleEdit}>
-        <input 
-          type='text'
-          name='name'
-          value={this.state.name}
-          onChange={this.onChange}
-          placeholder='edit'
-        />
-        <input 
-          type='text'
-          name='description'
-          value={this.state.description}
-          onChange={this.onChange}
-          placeholder='edit'
-        />
-        <button
-        onClick={()=>this.props.editProject(this.state)}  
-        >ec
-        edit 
-        </button>
+        <div className="editForm">
+          <form onSubmit={this.handleEdit}>
+          <input 
+            type='text'
+            name='name'
+            value={this.state.name}
+            onChange={this.onChange}
+            placeholder='edit project name'
+          />
+          <input 
+            type='text'
+            name='description'
+            value={this.state.description}
+            onChange={this.onChange}
+            placeholder='edit description'
+          />
+          <button
+          onClick={()=>this.props.editProject(this.state)}  
+          >
+          edit 
+          </button>
 
-        </form>
+          </form>
+        </div>
       </div>
     )
   }
