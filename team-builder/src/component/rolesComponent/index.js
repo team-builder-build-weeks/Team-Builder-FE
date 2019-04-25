@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { connect } from 'react-redux';
-import { addRole } from '../../action';
+import { addRoles } from '../../action';
 
 import RoleList from './RoleList';
 import RoleForm from './RoleForm';
@@ -16,4 +16,4 @@ function index() {
   )
 }
 
-export default  connect(null, { addRole })(index);
+export default  connect(null, { addRoles })(index);

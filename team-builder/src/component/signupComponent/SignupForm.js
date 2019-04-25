@@ -25,25 +25,30 @@ class SignupForm extends Component {
   }
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <div className='signupWrapper'>
+        <form onSubmit={this.handleSubmit}>
         <input 
           type='text'
           name='username'
-          placeholder='username'
+          placeholder='your username'
           value={this.state.username}
           onChange={this.handleChange}
+          required
         />
 
         <input 
           type='text'
           name='password'
-          placeholder='password'
+          placeholder='your password'
           value={this.state.password}
           onChange={this.handleChange}
+          required
         />
 
         <button>Sign up</button>
       </form>
+    </div>
+      
     )
   }
 }

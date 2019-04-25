@@ -5,9 +5,8 @@ const initialState = {
     projectList: [{
         id:'',
         name:'',
-        discription:''
+        description:''
     }]
-     
 }
 
 
@@ -26,14 +25,47 @@ function reducer(state=initialState, action){
         }
 
         case SIGNUP_SUCCESS:
+        return {
+            ...state,
+            error:'',
+            isLoading: false
+        }
+
         case LOGIN_SUCCESS:
+        return{
+            ...state,
+            error:'',
+            isLoading: false
+        }
         case ADD_PROJECT_SUCCESS:
+        return {
+            ...state,
+            projectList: [
+                ...state.projectList,
+                action.payload
+            ]
+        }
+
         case DELETE_PROJECT_SUCCESS:
+        return {
+            // ...state,
+            projectList: state.projectList.filter((project, id)=>{
+                return id !== action.payload
+            })
+        }
+
         case FETCHING_PROJECT_SUCCESS:
+        return {
+            ...state,
+            projectList: action.payload.map(project => { project.id = project._id; return project; })
+        }
         case ADD_ROLES_SUCCESS:
         return {
             ...state,
-            projects: action.payload,
+            projectList: [
+                ...state.projectList,
+                action.payload,
+            ],
             error:'', 
             isLoading: false
         }
@@ -49,7 +81,14 @@ function reducer(state=initialState, action){
             error: action.payload,
             isLoading: false
         }
-
+        case 'persist/REHYDRATE':
+        return {
+            ...state, hydratedState: action.payload
+        }
+        case 'persist/PERSIST':
+        return {
+            ...state, persistedState: action.payload
+        }
         default:
         return state
     }

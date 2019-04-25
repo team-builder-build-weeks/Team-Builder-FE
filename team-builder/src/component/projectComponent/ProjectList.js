@@ -7,20 +7,23 @@ import { connect } from 'react-redux';
 import Project from './Project';
 
 
-
 class ProjectList extends Component {
 
-    
+  componentDidMount() {
+    this.props.getProjects();
+  }
+
+  
   render() {
     console.log('inside list', this.props, this.props.projectList)
     return (
       <div>
-        {this.props.projectList.map((project, id) => 
-            (<div className="projectListWrap" key={project.id}>
-            <Link to={`/project/${project.id}`}>
-              <Project project={project} key={id} />
-            </Link>
-              </div>)
+        {this.props.projectList.map((project, id) => (
+            <div className="projectListWrap" key={project.id}>
+              <Link to={`/project/${project.id}`} onClick={this.LinkClickHandler}>
+                <Project project={project} key={project.id} id={id} />
+              </Link>
+            </div>)
         )}
       </div>
     )

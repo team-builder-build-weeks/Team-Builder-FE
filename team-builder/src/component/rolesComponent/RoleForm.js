@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { addRole } from '../../action';
+import { addRoles } from '../../action';
 
 
 
@@ -19,7 +19,7 @@ handleChange = e => {
 
 handleSubmit = e => {
     e.preventDefault();
-    this.props.addRole(this.state)
+    this.props.addRoles(this.state)
     this.setState({
         role:'',
         id:Date.now()
@@ -48,4 +48,4 @@ const mapStateToProp = state => ({
 
 
 
-export default connect(mapStateToProp,{ addRole })(RoleForm)
+export default connect(mapStateToProp,{ addRoles })(RoleForm)

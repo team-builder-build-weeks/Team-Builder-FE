@@ -5,18 +5,46 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
+import { loadState, saveState } from './localStorage';
+// import { persistStore, persistReducer } from 'redux-persist';
+// import { PersistGate } from 'redux-persist/integration/react'
+// import storage from 'redux-persist/lib/storage';
+// import hardSet from 'redux-persist/lib/stateReconciler/hardSet'
 
-import reducer from './rooterReducer';
+import rootReducer from './rooterReducer';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import 'bootstrap/dist/css/bootstrap.css';
 
-const store = createStore(reducer, applyMiddleware(thunk, logger));
+// const persistConfig = {
+//     key: 'root',
+//     storage,
+//     stateReconciler: hardSet
+// }
+   
+// const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+
+const store = createStore(rootReducer, applyMiddleware(
+    thunk, 
+    logger, 
+    // persistStore
+));
+
+// saves state to localstorage to persist data inbetween reloads
+store.subscribe(() => {
+    saveState(store.getState());
+});
+
+// const persistor = persistStore(store)
 
 
 ReactDOM.render(
 <Provider store = {store} >
-    <App />
+    {/* <PersistGate loading={null} persistor={persistor}> */}
+        <App />
+    {/* </PersistGate> */}
 </Provider>, 
 document.getElementById('root'));
 
