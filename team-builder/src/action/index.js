@@ -33,7 +33,12 @@ export const EDIT_PROJECT_START = 'EDIT_PROJECT_START';
 export const EDIT_PROJECT_SUCCESS = 'EDIT_PROJECT_SUCCESS';
 export const EDIT_PROJECT_FAIL = 'EDIT_PROJECT_FAIL';
 
+export const TOGGLEVIEW = 'TOGGLEVIEW';
 
+
+export const toggleView = () => dispatch => {
+    dispatch({ type: TOGGLEVIEW })
+}
 
 export const signup = credentails => dispatch => {
     console.log('inside action', credentails)

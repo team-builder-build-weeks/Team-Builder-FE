@@ -3,15 +3,12 @@ import ProjectComponent from './projectComponent';
 import RolesComponent from './rolesComponent';
 import Table from './tableComponent/table.js';
 
-
-export default function ComponentIndexFile(props) {
-  console.log('comp', props)
-  
+export default function ComponentIndexFile() {
   return (
-    <div className='compDiv'>
+    <div>
       <ProjectComponent />
       {/* <RolesComponent /> */}
-      <Table/>
+      {/* <Table/> */}
     </div>
   )
 }

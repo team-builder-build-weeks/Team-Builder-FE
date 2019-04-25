@@ -1,4 +1,4 @@
-import{ LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, FETCHING_PROJECT_START, ADD_PROJECT_SUCCESS, ADD_PROJECT_FAIL, ADD_PROJECT_START, FETCHING_PROJECT_SUCCESS, FETCHING_PROJECT_FAIL, DELETE_PROJECT_START, DELETE_PROJECT_SUCCESS, DELETE_PROJECT_FAIL, SIGNUP_START, SIGNUP_SUCCESS, SIGNUP_FAIL, ADD_ROLES_START, ADD_ROLES_SUCCESS, ADD_ROLES_FAIL } from '../action';
+import{ LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, FETCHING_PROJECT_START, ADD_PROJECT_SUCCESS, ADD_PROJECT_FAIL, ADD_PROJECT_START, FETCHING_PROJECT_SUCCESS, FETCHING_PROJECT_FAIL, DELETE_PROJECT_START, DELETE_PROJECT_SUCCESS, DELETE_PROJECT_FAIL, SIGNUP_START, SIGNUP_SUCCESS, SIGNUP_FAIL, ADD_ROLES_START, ADD_ROLES_SUCCESS, ADD_ROLES_FAIL, TOGGLEVIEW } from '../action';
 
 import { loadState } from '../localStorage';
 
@@ -7,6 +7,7 @@ import { loadState } from '../localStorage';
 
 let initialState = loadState() || {
     project:[],
+    displayGrid: true,
     projectList: [{
         id:null,
         name:'',
@@ -89,14 +90,11 @@ function reducer(state=initialState, action){
             error: action.payload,
             isLoading: false
         }
-        case 'persist/REHYDRATE':
-        return {
-            ...state, hydratedState: action.payload
-        }
-        case 'persist/PERSIST':
-        return {
-            ...state, persistedState: action.payload
-        }
+        case TOGGLEVIEW:
+            return {
+                ...state,
+                displayGrid: !state.displayGrid
+            }
         default:
         return state
     }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
 
-import { getProjects } from '../../action';
+import { getProjects, toggleView } from '../../action';
 import { connect } from 'react-redux';
 import Project from './Project';
 
@@ -41,4 +41,4 @@ const mapStateToProps = state => (
     projectList: state.projectList
 })
 
-export default connect (mapStateToProps, { getProjects })(ProjectList);
+export default connect (mapStateToProps, { getProjects, toggleView })(ProjectList);
