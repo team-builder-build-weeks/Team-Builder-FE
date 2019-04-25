@@ -28,7 +28,7 @@ class App extends Component {
 
           <Route path='/login' component={Login} />
           <Route path='/signup' component={SignupForm} />
-          <Route path='/project/:id' render={props => <ProjectView {...{props}}} />
+          {/* <Route path='/project/:id' render={props => {ProjectView} {...{props}}} /> */}
           <PrivateRoute exact path='/protected' component={ComponentIndexFile} />
         </div>
       </Router>

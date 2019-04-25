@@ -41,7 +41,9 @@ class ProjectForm extends Component {
   render() {
       const {projectName, projectDisc } =this.state
     return (
-      <form onSubmit = {this.handleSubmit}>
+      <form 
+      className='addProjectForm'
+      onSubmit = {this.handleSubmit}>
           <input 
             input='text'
             name='projectName'

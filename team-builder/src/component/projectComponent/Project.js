@@ -29,7 +29,7 @@ class Project extends Component {
 
     const{ name, description, id } = project;
     return (
-      <div className="project-wrap">
+      <div className="projectWrap">
         <h2>{name}</h2>
         <p>{description}</p>
         <button
@@ -37,7 +37,7 @@ class Project extends Component {
               e.preventDefault();
               this.props.deleteProject(id)
               }}
-        >Delete Project</button>
+        >Delete </button>
       </div>
     )
   }
