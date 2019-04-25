@@ -7,9 +7,10 @@
 
 
 import React, { Component } from 'react'
-import { deleteProject } from '../../action';
+import { deleteProject, editProject } from '../../action';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 
 
 
@@ -33,6 +34,11 @@ class Project extends Component {
         <button
             onClick={()=>this.props.deleteProject(id)}
         >Delete</button>
+        <button
+          onClick={()=>this.props.editProject(project)}  
+        >
+          edit 
+        </button>
       </div>
     )
   }
@@ -43,7 +49,7 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps, { deleteProject })(Project)
+export default connect(mapStateToProps, { deleteProject, editProject })(Project)
 
 
 // export default connect(mapStateToProps, { deleteProject })(Project)

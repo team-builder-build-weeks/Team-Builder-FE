@@ -1,4 +1,4 @@
-import{ LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, FETCHING_PROJECT_START, ADD_PROJECT_SUCCESS, ADD_PROJECT_FAIL, ADD_PROJECT_START, FETCHING_PROJECT_SUCCESS, FETCHING_PROJECT_FAIL, DELETE_PROJECT_START, DELETE_PROJECT_SUCCESS, DELETE_PROJECT_FAIL, SIGNUP_START, SIGNUP_SUCCESS, SIGNUP_FAIL, ADD_ROLES_START, ADD_ROLES_SUCCESS, ADD_ROLES_FAIL } from '../action';
+import{ LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, FETCHING_PROJECT_START, ADD_PROJECT_SUCCESS, ADD_PROJECT_FAIL, ADD_PROJECT_START, FETCHING_PROJECT_SUCCESS, FETCHING_PROJECT_FAIL, DELETE_PROJECT_START, DELETE_PROJECT_SUCCESS, DELETE_PROJECT_FAIL, SIGNUP_START, SIGNUP_SUCCESS, SIGNUP_FAIL, ADD_ROLES_START, ADD_ROLES_SUCCESS, ADD_ROLES_FAIL, EDIT_PROJECT_START, EDIT_PROJECT_SUCCESS, EDIT_PROJECT_FAIL } from '../action';
 
 // const mockData = JSON.parse(require('../mockData.json'))
 // console.log(mockData)
@@ -21,6 +21,7 @@ function reducer(state=initialState, action){
         case ADD_PROJECT_START:
         case DELETE_PROJECT_START:
         case ADD_ROLES_START:
+        case EDIT_PROJECT_START:
         return {
             ...state,
             error:'',
@@ -54,6 +55,13 @@ function reducer(state=initialState, action){
             })
         }
 
+        case EDIT_PROJECT_SUCCESS:
+        return {
+            ...state,
+            project:action.payload
+        }
+
+
         case FETCHING_PROJECT_SUCCESS:
         return {
             ...state,
@@ -82,6 +90,7 @@ function reducer(state=initialState, action){
         case ADD_PROJECT_FAIL:
         case DELETE_PROJECT_FAIL:
         case ADD_ROLES_FAIL:
+        case EDIT_PROJECT_FAIL:
         return {
             ...state,
             error: action.payload,

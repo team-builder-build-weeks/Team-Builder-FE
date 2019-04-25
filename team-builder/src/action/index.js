@@ -119,9 +119,9 @@ export const addRoles = newRole => dispatch => {
     .catch(err => dispatch({ type: ADD_ROLES_FAIL, playload: err }))
 }
 
-export const editProject = id =>dispatch => {
+export const editProject = project => dispatch => {
     dispatch({ type: EDIT_PROJECT_START})
-    return axios.put('https://team-builders.herokuapp.com/api/projects', id)
+    return axios.put(`https://team-builders.herokuapp.com/api/projects/${project.id}`, project)
     .then(res=>dispatch({ type: EDIT_PROJECT_SUCCESS, payload: res.data}))
     .catch(err=> dispatch({ type: EDIT_PROJECT_FAIL, payload: err}))
 }
