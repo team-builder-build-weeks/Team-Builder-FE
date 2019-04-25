@@ -1,0 +1,4 @@
+[build]
+  base    = "team-builder"
+  command = "yarn build"
+  publish = "team-builder/build"
