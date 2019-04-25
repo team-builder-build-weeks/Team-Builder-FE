@@ -80,19 +80,21 @@
   border: 1px solid green;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  background: #999;
+  background: #282828;
   grid-gap: 5px;
 }
 
 .projectWrap{
-  background-color: orange;
+  background-color: rgb(60, 138, 255);
   height: 10rem;
   width: 12rem;
   color: white;
   border-radius: 10px;
 }
 .projectWrap button{
-  background-color: lightblue;
-  color: gray;
-  border-radius: 5px;
+  background-color: rgb(209, 243, 255);
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  background: white;
+  border: 1px solid white;
 }
