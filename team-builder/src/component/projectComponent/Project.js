@@ -22,22 +22,22 @@ class Project extends Component {
 // }
 constructor(props){
   super(props);
-  this.state={
-  id:props.project.id,
-  name:'',
-  description:''
+    this.state={
+    id:props.project.id,
+    name:'',
+    description:''
+  }
 }
-}
 
 
 
-handleEdit=e=>{
+handleEdit= e =>{
   e.preventDefault();
   this.props.editProject(this.state)
  
 }
 
-onChange=e=>{
+onChange= e =>{
   
   this.setState({
     [e.target.name]: e.target.value
@@ -49,7 +49,7 @@ onChange=e=>{
     const project =  this.props.projects.find(projectInArr =>{
       return projectInArr.id == this.props.match.params.id;
     } )||this.props.project 
-    console.log('inside project',this.props)
+    // console.log('inside project',this.props)
       const{ name, discription, id } = project
     return (
       <div className="projectWrap">

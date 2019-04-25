@@ -36,7 +36,7 @@ export const EDIT_PROJECT_FAIL = 'EDIT_PROJECT_FAIL';
 
 
 export const signup = credentails => dispatch => {
-    console.log('inside action', credentails)
+    // console.log('inside action', credentails)
     dispatch({ type: SIGNUP_START });
     return axios.post('https://team-builders.herokuapp.com/api/register', credentails)
     .then(res=>{
@@ -81,7 +81,7 @@ export const addProject = newProject => dispatch => {
     return axios.post('https://team-builders.herokuapp.com/api/projects', newProject)
     .then(res => 
         {
-            console.log('add action', res)
+            // console.log('add action', res)
             dispatch({ type: ADD_PROJECT_SUCCESS, payload: res.data })
         })
         
@@ -95,7 +95,7 @@ export const deleteProject = id => dispatch => {
     return axios.delete(`https://team-builders.herokuapp.com/api/projects/${id}`)
     .then(res => 
         {
-            console.log('inside delete', res)
+            // console.log('inside delete', res)
             dispatch({ type: DELETE_PROJECT_SUCCESS, payload: id})
         }
         

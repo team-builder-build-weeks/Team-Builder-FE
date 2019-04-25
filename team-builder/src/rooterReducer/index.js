@@ -56,7 +56,7 @@ function reducer(state=initialState, action){
         }
 
         case EDIT_PROJECT_SUCCESS:
-        console.log('in red', action.payload)
+        // console.log('in red', action.payload)
         return {
             ...state,
             projectList: state.projectList.map(project=>{

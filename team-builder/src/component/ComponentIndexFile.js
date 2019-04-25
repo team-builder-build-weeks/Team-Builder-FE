@@ -5,7 +5,7 @@ import Table from './tableComponent/table.js';
 
 
 export default function ComponentIndexFile(props) {
-  console.log('comp', props)
+  // console.log('comp', props)
   
   return (
     <div className='compDiv'>
