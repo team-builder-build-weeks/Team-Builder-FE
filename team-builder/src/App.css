@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
@@ -70,4 +74,25 @@
   text-align: center;
   background-color: rgb(223, 223, 223);
   border-radius: 15px;
+}
+
+.projectListWrapper{
+  border: 1px solid green;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  background: #999;
+  grid-gap: 5px;
+}
+
+.projectWrap{
+  background-color: orange;
+  height: 10rem;
+  width: 12rem;
+  color: white;
+  border-radius: 10px;
+}
+.projectWrap button{
+  background-color: lightblue;
+  color: gray;
+  border-radius: 5px;
 }

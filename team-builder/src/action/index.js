@@ -69,8 +69,8 @@ export const addProject = newProject => dispatch => {
     return axios.post('https://team-builders.herokuapp.com/api/projects', newProject)
     .then(res => dispatch({ type: ADD_PROJECT_SUCCESS, payload: newProject }))
     // .then(res => dispatch({ type: ADD_PROJECT_SUCCESS, payload: res.data }))
-    .catch(err => dispatch({ type: ADD_PROJECT_SUCCESS, payload: newProject }))
-    // .catch(err => dispatch({ type: ADD_PROJECT_FAIL, payload: err }))
+    // .catch(err => dispatch({ type: ADD_PROJECT_SUCCESS, payload: newProject }))
+    .catch(err => dispatch({ type: ADD_PROJECT_FAIL, payload: err }))
 }
 
 export const deleteProject = id => dispatch => {
