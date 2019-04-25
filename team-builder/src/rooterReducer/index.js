@@ -43,17 +43,14 @@ function reducer(state=initialState, action){
         case ADD_PROJECT_SUCCESS:
         return {
             ...state,
-            projectList: [
-                ...state.projectList,
-                action.payload
-            ]
+            projectList: action.payload
         }
 
         case DELETE_PROJECT_SUCCESS:
         return {
             ...state,
-            projectList: state.projectList.filter((project, id)=>{
-                return id !== action.payload
+            projectList: state.projectList.filter((project)=>{
+                return project.id !== action.payload
             })
         }
 

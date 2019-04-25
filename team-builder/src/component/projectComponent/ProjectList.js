@@ -21,14 +21,14 @@ class ProjectList extends Component {
         {this.props.projectList.map((project, id) => (
             <div className="projectListWrap" key={id}>
             {/* <div className="projectListWrap" key={project.id}> */}
-              <Link to={`/project/${project}`} >
+              {/* <Link to={`/project/${project}`} > */}
               
               {/* <Link to={`/project/${project.id}`} > */}
 
               <Project project={project} key={id} />
               
                 {/* <Project project={project} key={project.id} id={id} /> */}
-              </Link>
+              {/* </Link> */}
             </div>)
         )}
       </div>

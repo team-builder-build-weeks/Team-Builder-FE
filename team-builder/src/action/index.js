@@ -73,7 +73,12 @@ export const addProject = newProject => dispatch => {
     console.log(newProject)
 
     return axios.post('https://team-builders.herokuapp.com/api/projects', newProject)
-    .then(res => dispatch({ type: ADD_PROJECT_SUCCESS, payload: newProject }))
+    .then(res => 
+        {
+            console.log('add action', res)
+            dispatch({ type: ADD_PROJECT_SUCCESS, payload: res.data })
+        })
+        
     // .then(res => dispatch({ type: ADD_PROJECT_SUCCESS, payload: res.data }))
     // .catch(err => dispatch({ type: ADD_PROJECT_SUCCESS, payload: newProject }))
     .catch(err => dispatch({ type: ADD_PROJECT_FAIL, payload: err }))
@@ -82,7 +87,13 @@ export const addProject = newProject => dispatch => {
 export const deleteProject = id => dispatch => {
     dispatch({ type: DELETE_PROJECT_START });
     return axios.delete(`https://team-builders.herokuapp.com/api/projects/${id}`)
-    .then(res => dispatch({ type: DELETE_PROJECT_SUCCESS, playload: id}))
+    .then(res => 
+        {
+            console.log('inside delete', res)
+            dispatch({ type: DELETE_PROJECT_SUCCESS, payload: id})
+        }
+        
+        )
     .catch(res => dispatch({ type: DELETE_PROJECT_FAIL, payload: res.data }))
 }
 

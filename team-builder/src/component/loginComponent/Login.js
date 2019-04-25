@@ -28,7 +28,9 @@ class Login extends Component {
                 console.log('inside action',id)
                 if(id){
                     this.props.history.push('/protected')
-                }else{this.props.history.push('/login')}  
+                }else{
+                    alert('wrong creds')
+                    this.props.history.push('/login')}  
             }) 
     }
 
