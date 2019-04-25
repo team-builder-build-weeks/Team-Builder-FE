@@ -30,6 +30,8 @@ class App extends Component {
           <Route path='/signup' component={SignupForm} />
           {/* <Route path='/project/:id' render={props => {ProjectView} {...{props}}} /> */}
           <PrivateRoute exact path='/protected' component={ComponentIndexFile} />
+          <PrivateRoute exact path='/protected/:id' indi={true} component={ComponentIndexFile} />
+          
         </div>
       </Router>
       

@@ -24,8 +24,14 @@ class Login extends Component {
     login = e => {
         e.preventDefault();
         this.props.login(this.state.credentials)
-            .then(()=> this.props.history.push('/protected'))
-            .catch(()=>this.props.history.push('/login'));
+            .then((id)=> {
+                console.log('inside action',id)
+                if(id){
+                    this.props.history.push('/protected')
+                }else{
+                    alert('wrong creds')
+                    this.props.history.push('/login')}  
+            }) 
     }
 
   render() {

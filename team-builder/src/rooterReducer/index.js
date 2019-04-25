@@ -8,7 +8,7 @@ import { loadState } from '../localStorage';
 let initialState = loadState() || {
     project:[],
     projectList: [{
-        id:'',
+        id:null,
         name:'',
         description:''
     }]
@@ -45,17 +45,14 @@ function reducer(state=initialState, action){
         case ADD_PROJECT_SUCCESS:
         return {
             ...state,
-            projectList: [
-                ...state.projectList,
-                action.payload
-            ]
+            projectList: action.payload
         }
 
         case DELETE_PROJECT_SUCCESS:
         return {
-            // ...state,
-            projectList: state.projectList.filter((project, id)=>{
-                return id !== action.payload
+            ...state,
+            projectList: state.projectList.filter((project)=>{
+                return project.id !== action.payload
             })
         }
 
@@ -77,6 +74,12 @@ function reducer(state=initialState, action){
 
         case SIGNUP_FAIL:
         case LOGIN_FAIL:
+        return {
+            ...state,
+            error: action.payload,
+            isloading: false
+        }
+
         case FETCHING_PROJECT_FAIL:
         case ADD_PROJECT_FAIL:
         case DELETE_PROJECT_FAIL:

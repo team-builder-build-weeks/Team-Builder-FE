@@ -29,6 +29,12 @@ export const ADD_ROLES_START = 'ADD_ROLES_START';
 export const ADD_ROLES_SUCCESS = 'ADD_ROLES_SUCCESS';
 export const ADD_ROLES_FAIL = 'ADD_ROLES_FAIL';
 
+export const EDIT_PROJECT_START = 'EDIT_PROJECT_START';
+export const EDIT_PROJECT_SUCCESS = 'EDIT_PROJECT_SUCCESS';
+export const EDIT_PROJECT_FAIL = 'EDIT_PROJECT_FAIL';
+
+
+
 export const signup = credentails => dispatch => {
     console.log('inside action', credentails)
     dispatch({ type: SIGNUP_START });
@@ -49,9 +55,15 @@ export const login = credentails => dispatch => {
     .then(res => {
         localStorage.setItem('token', res.data.token)
         axios.defaults.headers.common['Authorization'] = res.data.token;
-        return dispatch({ type: LOGIN_SUCCESS, payload: res.data })
+       dispatch({ type: LOGIN_SUCCESS, payload: res.data })
+       return 1
     })
-    .catch(err => dispatch({ type: LOGIN_FAIL, payload: err }))
+    .catch(err => {
+        dispatch({ type: LOGIN_FAIL, payload: err })
+        return 0
+    }
+    )
+    
 }
 
 export const getProjects = () => dispatch => {
@@ -67,7 +79,12 @@ export const addProject = newProject => dispatch => {
     console.log(newProject)
 
     return axios.post('https://team-builders.herokuapp.com/api/projects', newProject)
-    .then(res => dispatch({ type: ADD_PROJECT_SUCCESS, payload: newProject }))
+    .then(res => 
+        {
+            console.log('add action', res)
+            dispatch({ type: ADD_PROJECT_SUCCESS, payload: res.data })
+        })
+        
     // .then(res => dispatch({ type: ADD_PROJECT_SUCCESS, payload: res.data }))
     // .catch(err => dispatch({ type: ADD_PROJECT_SUCCESS, payload: newProject }))
     .catch(err => dispatch({ type: ADD_PROJECT_FAIL, payload: err }))
@@ -76,7 +93,13 @@ export const addProject = newProject => dispatch => {
 export const deleteProject = id => dispatch => {
     dispatch({ type: DELETE_PROJECT_START });
     return axios.delete(`https://team-builders.herokuapp.com/api/projects/${id}`)
-    .then(res => dispatch({ type: DELETE_PROJECT_START, playload: res.data }))
+    .then(res => 
+        {
+            console.log('inside delete', res)
+            dispatch({ type: DELETE_PROJECT_SUCCESS, payload: id})
+        }
+        
+        )
     .catch(res => dispatch({ type: DELETE_PROJECT_FAIL, payload: res.data }))
 }
 
@@ -94,4 +117,11 @@ export const addRoles = newRole => dispatch => {
     return axios.post('https://team-builders.herokuapp.com/api/roles', newRole)
     .then(res => dispatch({ type: ADD_ROLES_SUCCESS, playload: res.data }))
     .catch(err => dispatch({ type: ADD_ROLES_FAIL, playload: err }))
+}
+
+export const editProject = id =>dispatch => {
+    dispatch({ type: EDIT_PROJECT_START})
+    return axios.put('https://team-builders.herokuapp.com/api/projects', id)
+    .then(res=>dispatch({ type: EDIT_PROJECT_SUCCESS, payload: res.data}))
+    .catch(err=> dispatch({ type: EDIT_PROJECT_FAIL, payload: err}))
 }
