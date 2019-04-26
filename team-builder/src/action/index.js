@@ -35,6 +35,11 @@ export const EDIT_PROJECT_FAIL = 'EDIT_PROJECT_FAIL';
 
 export const TOGGLEVIEW = 'TOGGLEVIEW';
 
+export const GETIN_PROJECT_START = 'GETIN_PROJECT_START'
+export const GETIN_PROJECT_SUCCESS = 'GETIN_PROJECT_SUCCESS'
+export const GETIN_PROJECT_FAIL = 'GETIN_PROJECT_FAIL'
+
+
 
 export const toggleView = () => dispatch => {
     dispatch({ type: TOGGLEVIEW })
@@ -126,9 +131,17 @@ export const addRoles = newRole => dispatch => {
 
 export const editProject = project => dispatch => {
     dispatch({ type: EDIT_PROJECT_START})
-    console.log('in aa',project)
-    const newProject={name: project.name, description: project.description}
+    console.log('in aa',project.id)
+    const newProject= { name: project.name, description: project.description }
     return axios.put(`https://team-builders.herokuapp.com/api/projects/${project.id}`, newProject)
     .then(res=>dispatch({ type: EDIT_PROJECT_SUCCESS, payload: res.data}))
     .catch(err=> dispatch({ type: EDIT_PROJECT_FAIL, payload: err}))
+}
+
+
+export const getSingleProject = id => dispatch => {
+    dispatch({ type: GETIN_PROJECT_START })
+    return axios.get(`https://team-builders.herokuapp.com/api/projects/${id}`)
+    .then(res => dispatch({ type: GETIN_PROJECT_SUCCESS, payload: res.data }))
+    .catch(err => dispatch({ type: GETIN_PROJECT_FAIL, payload: err }))
 }

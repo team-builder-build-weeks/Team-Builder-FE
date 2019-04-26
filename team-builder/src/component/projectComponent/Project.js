@@ -4,29 +4,44 @@
 
 // import Members from '../memberComponent';
 
-
-
 import React, { Component } from 'react'
-import { deleteProject, editProject } from '../../action';
+import { deleteProject, editProject, getSingleProject } from '../../action';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { withRouter } from 'react-router-dom';
 
-
-
 class Project extends Component {
 
 constructor(props){
   super(props);
-    this.state={
-    id:props.project.id,
-    name:'',
-    description:''
+    console.log(props) 
+    if (props.project) {
+      this.state = { 
+        ...props.project,
+        project: props.project,
+        
+      }
+    } else {
+      this.state= {
+        id: null,
+        name:'',
+        description:'',
+        project: this.getProjectFromUrl()
+    }
   }
+  // console.log(this.getProjectFromUrl())
 }
 
-
+getProjectFromUrl = () => {
+  // const url = window.location.href.substr(window.location.href.lastIndexOf('/') + 1)
+  const url = this.props.match.params.id;
+  const project = this.props.projects.find(projectInArr => {
+    return projectInArr.id == url;
+  })
+  // console.log('map state to props project component', url, project)
+  return project;
+}
 
 handleEdit= e =>{
   e.preventDefault();
@@ -41,21 +56,30 @@ onChange= e =>{
   })
 }
 
+  componentDidMount() {
+    const project =  this.props.projects.find(projectInArr => {
+      return projectInArr.id == this.props.match.params.id;
+    }) || this.props.project 
+
+
+    this.setState({
+      id: this.props.match.params.id
+    })
+  }
+
 
   render() {
-    const project =  this.props.projects.find(projectInArr =>{
-      return projectInArr.id == this.props.match.params.id;
-    } )||this.props.project 
+    // console.log(this.props.match.params.id)
+
     // console.log('inside project',this.props)
-      const{ name, discription, id } = project
+
+    let { name, description, id } = this.state.project;
+    // console.log(project)
+
     return (
-      <div className="projectWrap">
+      <div className="projectWrap" onClick={()=>this.props.getSingleProject(id)}>
         <Link to={`/protected/${id}`}><h2>{name}</h2></Link>
         <p>{description}</p>
-       
-        <button
-            onClick={()=>this.props.deleteProject(id)}
-        >Delete</button>
         <div className="editForm">
           <form onSubmit={this.handleEdit}>
           <input 
@@ -72,11 +96,21 @@ onChange= e =>{
             onChange={this.onChange}
             placeholder='edit description'
           />
+       
+       <div className="project-buttons">
+
+
+        <button
+            onClick={()=>this.props.deleteProject(id)}
+        >Delete</button>
+
+
           <button
-          onClick={()=>this.props.editProject(this.state)}  
+          onClick={()=>this.props.editProject({ ...this.state, id: this.state.project.id } )}  
           >
           edit 
           </button>
+       </div>
 
           </form>
         </div>
@@ -85,12 +119,16 @@ onChange= e =>{
   }
 }
 
-const mapStateToProps = state => ({
-  projects: state.projectList
-})
+const mapStateToProps = state => {
+
+  return ({
+
+    projects: state.projectList
+  })
+}
 
 
-export default connect(mapStateToProps, { deleteProject, editProject })(withRouter(Project))
+export default connect(mapStateToProps, { deleteProject, editProject, getSingleProject })(withRouter(Project))
 
 
 // export default connect(mapStateToProps, { deleteProject })(Project)

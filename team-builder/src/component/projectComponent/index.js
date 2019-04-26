@@ -9,7 +9,7 @@ import Table from '../tableComponent/table.js';
 function index(props) { 
   // console.log(props.displayGrid)
   return (
-    <div className='App'>
+    <div className='projectComponent'>
 
     <div className="toolbar">
       <button onClick={() => props.toggleView()} >Toggle view</button>

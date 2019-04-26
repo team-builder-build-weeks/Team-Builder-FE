@@ -18,8 +18,8 @@ class ProjectList extends Component {
     // console.log('inside list', this.props, this.props.projectList)
     return (
       <div className='projectListWrapper' >
-        {this.props.projectList.map((project, id) => (
-            <div className="projectListWrap" key={id}>
+        {this.props.projectList.map((project, id) => {
+            return ( <div className="projectListWrap" key={id}>
             {/* <div className="projectListWrap" key={project.id}> */}
               {/* <Link to={`/project/${project}`} > */}
               
@@ -30,6 +30,7 @@ class ProjectList extends Component {
                 {/* <Project project={project} key={project.id} id={id} /> */}
               {/* </Link> */}
             </div>)
+            }
         )}
       </div>
     )
