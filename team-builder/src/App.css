@@ -4,6 +4,7 @@
 
 .App {
   text-align: center;
+  background: #282828;
 }
 
 
@@ -12,6 +13,7 @@
   display: grid;
   grid-template-columns: 300px 1fr 1fr;
   grid-gap: 5px;
+  background: #282828;
   
 }
 

@@ -17,9 +17,6 @@ import { withRouter } from 'react-router-dom';
 
 class Project extends Component {
 
-// componentDidMount(){
-//   this.props.deleteProject()
-// }
 constructor(props){
   super(props);
   this.state={
@@ -50,11 +47,11 @@ onChange=e=>{
       return projectInArr.id == this.props.match.params.id;
     } )||this.props.project 
     console.log('inside project',this.props)
-      const{ name, discription, id } = project
+      const{ name, description, id } = project
     return (
       <div className="projectWrap">
         <Link to={`/protected/${id}`}><h2>{name}</h2></Link>
-        <p>{discription}</p>
+        <p>{description}</p>
        
         <button
             onClick={()=>this.props.deleteProject(id)}
