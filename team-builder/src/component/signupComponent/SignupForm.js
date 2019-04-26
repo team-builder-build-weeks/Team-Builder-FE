@@ -6,10 +6,8 @@ import { signup } from '../../action';
 class SignupForm extends Component {
   
   state={
-      
       username:'',
       password:''
-    
   }
   
   handleChange = e => {
@@ -21,6 +19,7 @@ class SignupForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.signup(this.state);
+    this.props.history.push('/login')  
     // axios.post('https://team-builders.herokuapp.com/api/register', this.state);
   }
   render() {
