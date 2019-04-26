@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import axios from 'axios';
 
-import { loadState, saveState } from './localStorage';
+import { saveState } from './localStorage';
 // import { persistStore, persistReducer } from 'redux-persist';
 // import { PersistGate } from 'redux-persist/integration/react'
 // import storage from 'redux-persist/lib/storage';
@@ -30,7 +30,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 const store = createStore(rootReducer, applyMiddleware(
     thunk, 
     logger, 
-    // persistStore
 ));
 
 // saves state to localstorage to persist data inbetween reloads
