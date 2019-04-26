@@ -98,7 +98,27 @@
   background-color: tomato;
   color: white;
   border-radius: 5px;
+  border: none;
 }
+
+.projectWrap .editForm form{
+  display: grid;
+}
+.projectWrap .editForm form input{
+  text-align: center;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.projectWrap .editForm form button{
+  width: 30%;
+  margin: 0 auto;
+  border: none;
+}
+
+
+
 
 .addProjectForm{
   /* border: 1px solid dodgerblue; */

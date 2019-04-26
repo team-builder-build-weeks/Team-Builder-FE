@@ -19,22 +19,22 @@ class Project extends Component {
 
 constructor(props){
   super(props);
-  this.state={
-  id:props.project.id,
-  name:'',
-  description:''
+    this.state={
+    id:props.project.id,
+    name:'',
+    description:''
+  }
 }
-}
 
 
 
-handleEdit=e=>{
+handleEdit= e =>{
   e.preventDefault();
   this.props.editProject(this.state)
  
 }
 
-onChange=e=>{
+onChange= e =>{
   
   this.setState({
     [e.target.name]: e.target.value
@@ -46,8 +46,8 @@ onChange=e=>{
     const project =  this.props.projects.find(projectInArr =>{
       return projectInArr.id == this.props.match.params.id;
     } )||this.props.project 
-    console.log('inside project',this.props)
-      const{ name, description, id } = project
+    // console.log('inside project',this.props)
+      const{ name, discription, id } = project
     return (
       <div className="projectWrap">
         <Link to={`/protected/${id}`}><h2>{name}</h2></Link>
@@ -56,29 +56,30 @@ onChange=e=>{
         <button
             onClick={()=>this.props.deleteProject(id)}
         >Delete</button>
-        
-        <form onSubmit={this.handleEdit}>
-        <input 
-          type='text'
-          name='name'
-          value={this.state.name}
-          onChange={this.onChange}
-          placeholder='edit'
-        />
-        <input 
-          type='text'
-          name='description'
-          value={this.state.description}
-          onChange={this.onChange}
-          placeholder='edit'
-        />
-        <button
-        onClick={()=>this.props.editProject(this.state)}  
-        >ec
-        edit 
-        </button>
+        <div className="editForm">
+          <form onSubmit={this.handleEdit}>
+          <input 
+            type='text'
+            name='name'
+            value={this.state.name}
+            onChange={this.onChange}
+            placeholder='edit project name'
+          />
+          <input 
+            type='text'
+            name='description'
+            value={this.state.description}
+            onChange={this.onChange}
+            placeholder='edit description'
+          />
+          <button
+          onClick={()=>this.props.editProject(this.state)}  
+          >
+          edit 
+          </button>
 
-        </form>
+          </form>
+        </div>
       </div>
     )
   }

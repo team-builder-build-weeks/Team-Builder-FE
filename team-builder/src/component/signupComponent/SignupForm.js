@@ -6,7 +6,7 @@ import { signup } from '../../action';
 class SignupForm extends Component {
   
   state={
-    
+      
       username:'',
       password:''
     

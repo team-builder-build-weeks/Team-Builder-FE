@@ -15,7 +15,7 @@ class ProjectList extends Component {
 
   
   render() {
-    console.log('inside list', this.props, this.props.projectList)
+    // console.log('inside list', this.props, this.props.projectList)
     return (
       <div className='projectListWrapper' >
         {this.props.projectList.map((project, id) => (
@@ -37,7 +37,8 @@ class ProjectList extends Component {
 }
 
 const mapStateToProps = state => (
-  (console.log('map ProjectList', state)),{
+  // (console.log('map ProjectList', state)),
+  {
     projectList: state.projectList
 })
 
